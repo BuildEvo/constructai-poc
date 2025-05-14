@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import floorplan from '../public/assets/floorplan.png';
-import doorData from '../public/assets/door_data.json';
+
+const floorplan = process.env.PUBLIC_URL + "/assets/floorplan.png";
 
 function RadialMenu({ position, data, onClose }) {
   const statusColors = data.status;
@@ -25,7 +25,15 @@ function RadialMenu({ position, data, onClose }) {
 }
 
 function App() {
+  const [doorData, setDoorData] = useState({});
   const [activeDoor, setActiveDoor] = useState(null);
+
+  useEffect(() => {
+    fetch(process.env.PUBLIC_URL + "/assets/door_data.json")
+      .then(res => res.json())
+      .then(setDoorData);
+  }, []);
+
   const handleClick = (event) => {
     const rect = event.target.getBoundingClientRect();
     const clickX = event.clientX - rect.left;
@@ -40,6 +48,7 @@ function App() {
     }
     setActiveDoor(null);
   };
+
   return (
     <div className="App">
       <div className="floorplan-container" onClick={handleClick}>
@@ -55,4 +64,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
