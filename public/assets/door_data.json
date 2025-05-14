@@ -1,0 +1,18 @@
+{
+  "D-102": {
+    "coords": {
+      "x": 230,
+      "y": 235
+    },
+    "spec": "spec_door_08_11_13.pdf",
+    "submittal": "submittal_door_021.pdf",
+    "rfi": "rfi_door_17.pdf",
+    "bim": "",
+    "status": {
+      "spec": "green",
+      "submittal": "yellow",
+      "bim": "gray",
+      "rfi": "red"
+    }
+  }
+}
